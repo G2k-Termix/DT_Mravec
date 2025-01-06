@@ -8,7 +8,8 @@ Tento repozitár obsahuje implementáciu ETL procesu v Snowflake, určenú na an
 Cieľom semestrálneho projektu je analyzovať dáta týkajúce sa kníh, používateľov a ich hodnotení. Táto analýza umožňuje identifikovať trendy v čitateľských preferenciách, najpopulárnejšie knihy a správanie používateľov.
 
 Zdrojové dáta pochádzajú z Kaggle datasetu dostupného [tu](https://grouplens.org/datasets/movielens/). Dataset obsahuje osem hlavných tabuliek:
-- `age_group`
+- `movies`
+- `age_groups`
 - `genres`
 - `genres_movies`
 - `occupations`
