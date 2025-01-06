@@ -65,19 +65,19 @@ ETL proces sa skladal z troch hlavných krokov: `extrahovanie` (Extract), `trans
 
 ---
 ### **3.1 Extract (Extrahovanie dát)**
-Dáta zo zdrojového datasetu (formát `.csv`) boli najprv nahraté do Snowflake prostredníctvom interného stage úložiska s názvom `my_stage`. Stage v Snowflake slúži ako dočasné úložisko na import alebo export dát. Vytvorenie stage bolo zabezpečené príkazom:
+Dáta zo zdrojového datasetu vo formáte `.csv` boli najprv nahrané do Snowflake cez interné stage úložisko s názvom `my_stage`. Stage v Snowflake slúži ako dočasný priestor na import alebo export dát. Vytvorenie stage bolo realizované pomocou príkazu:
 
 #### Príklad kódu:
 ```sql
 CREATE OR REPLACE STAGE snail_stage;
 ```
-Do stage boli následne nahraté súbory obsahujúce údaje o knihách, používateľoch, hodnoteniach, zamestnaniach a úrovniach vzdelania. Dáta boli importované do staging tabuliek pomocou príkazu `COPY INTO`. Pre každú tabuľku sa použil podobný príkaz:
+Do stage boli následne nahrané súbory obsahujúce údaje o knihách, používateľoch, hodnoteniach, zamestnaniach a úrovniach vzdelania. Tieto dáta boli následne importované do staging tabuliek prostredníctvom príkazu `COPY INTO`. Pre každú tabuľku bol použitý podobný príkaz:
 
 ```sql
 CREATE OR REPLACE
-........
+!!!!!!EŠTE TREBA DOPÍSAŤ KÓD!!!!!!
 ```
 
-V prípade nekonzistentných záznamov bol použitý parameter `ON_ERROR = 'CONTINUE'`, ktorý zabezpečil pokračovanie procesu bez prerušenia pri chybách.
+V prípade nekonzistentných záznamov bol použitý parameter `ON_ERROR = 'CONTINUE'`, ktorý umožnil pokračovať v procese aj v prípade výskytu chýb, bez jeho prerušenia.
 
 ---
