@@ -233,7 +233,6 @@ LEFT JOIN dim_tags ON tags_staging.id = dim_tags.dim_tags_id;
 
 ### **3.3 Load (Načítanie dát)**
 
----
 
 Po úspešnom vytvorení dimenzií a faktovej tabuľky boli všetky dáta úspešne nahraté do finálnej štruktúry dátového skladu. V rámci optimalizácie využitia úložiska a udržania poriadku v databáze sme pristúpili k odstráneniu staging tabuliek, ktoré už po transformácii dát neboli potrebné. Tento krok zabezpečuje efektívnejšie spracovanie a správu dát v ďalších fázach procesu
 
