@@ -125,7 +125,6 @@ SELECT
     movies_staging.release_year AS release_year
 FROM movies_staging;
 ```
----
 
 ##### **3. Dimenzia : `dim_tags`**
 Obsahuje údaje o značkách (tags), ktoré sú používané na označovanie filmov:
@@ -193,7 +192,6 @@ SELECT
     END AS month_string
 FROM ratings_staging;
 ```
----
 ##### **6. Dimenzia `dim_genres`**
 Obsahuje údaje o žánroch:
 
@@ -204,8 +202,6 @@ SELECT
     genres_staging.genres AS genre
 FROM genres_staging;
 ```
-
---
 
 #### **Vytvorenie faktovej tabuľky:**
 
