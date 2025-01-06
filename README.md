@@ -90,7 +90,7 @@ V tejto fáze vytvoríme dimenzie a faktovú tabuľku. Dimenzie poskytujú konte
 
 ## Vytvorenie Dimenzíí
 
-## **1. Dimeznia : `dim_users`**
+# **1. Dimeznia : `dim_users`**
 Obsahuje údaje o používateľoch vrátane vekovej skupiny, pohlavia a zamestnania:
 
 ```sql
@@ -113,7 +113,7 @@ FROM users_staging
 LEFT JOIN occupations_staging ON users_staging.occupation_id = occupations_staging.id;
 ```
 ---
-## **2. Dimeznia : `dim_movies`**
+# **2. Dimeznia : `dim_movies`**
 Obsahuje údaje o filmoch vrátane názvu a roku vydania:
 
 ```sql
@@ -126,7 +126,7 @@ FROM movies_staging;
 ```
 ---
 
-## **3. Dimenzia : `dim_tags`**
+# **3. Dimenzia : `dim_tags`**
 Obsahuje údaje o značkách (tags), ktoré sú používané na označovanie filmov:
 
 ```sql
@@ -138,7 +138,7 @@ FROM tags_staging;
 ```
 ---
 
-## **4 Dimenzia:  `dim_time`**
+# **4 Dimenzia:  `dim_time`**
 Obsahuje údaje o čase hodnotení filmov vrátane hodín, minút a dennej časti (AM/PM):
 
 ```sql
@@ -157,7 +157,7 @@ FROM (SELECT DISTINCT CAST(rated_at AS TIME) AS rated_at FROM ratings_staging);
 ```
 ---
 
-## **5. Dimenzia: `dim_date`**
+# **5. Dimenzia: `dim_date`**
 Obsahuje údaje o dátumoch:
 
 ```sql
@@ -195,7 +195,7 @@ SELECT
 FROM ratings_staging;
 ```
 ---
-## **6. Dimenzia `dim_genres`**
+# **6. Dimenzia `dim_genres`**
 Obsahuje údaje o žánroch:
 
 ```sql
@@ -210,7 +210,7 @@ FROM genres_staging;
 
 ### **Vytvorenie faktovej tabuľky:**
 
-## **1. Faktová tabuľka: `fact_ratings`**
+# **1. Faktová tabuľka: `fact_ratings`**
 Obsahuje hodnotenia filmov spolu s príslušnými dimenziami:
 
 ```sql
