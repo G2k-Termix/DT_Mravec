@@ -87,6 +87,7 @@ V prípade nekonzistentných záznamov bol použitý parameter `ON_ERROR = 'CONT
 ### **3.2 Transform (Transformácia dát)**
 
 V tejto fáze vytvoríme dimenzie a faktovú tabuľku. Dimenzie poskytujú kontext, zatiaľ čo faktová tabuľka obsahuje kľúčové metriky.
+
 ---
 #### Vytvorenie Dimenzíí
 
