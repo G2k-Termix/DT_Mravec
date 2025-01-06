@@ -36,12 +36,12 @@ Surové dáta sú usporiadané v relačnom modeli, ktorý je znázornený na **e
 ## **2 Dimenzionálny model**
 
 Navrhnutý bol **hviezdicový model (star schema)**, pre efektívnu analýzu kde centrálny bod predstavuje faktová tabuľka **`fact_ratings`**, ktorá je prepojená s nasledujúcimi dimenziami:
-- **`dim_movies`**: Obsahuje informácie o filmoch ako napríklad: id filmu, názov a rok vydania
-- **`dim_tags`**: Obsahuje značky (tags), ktoré môžu slúžiť na analýzu nálad alebo na dodatočné triedenie filmov.
-- **`dim_genres`**: Obsahuje informácie o žánroch, čiže id žánru a názov
-- **`dim_users`**: Obsahuje demografické údaje o používateľoch, ako sú vek, vekové kategórie, pohlavie, PSČ a povolanie.
-- **`dim_date`**: Obsahuje údaje o hodnotiacich dátumoch, ako sú deň, mesiac, rok, názvy mesiacov a dni v týždni.
-- **`dim_time`**: Obsahuje podrobné informácie o tag-och, ako napríklad: tagy, dátum a čas vytvorenia.
+- **`dim_movies`**: Uchováva údaje o filmoch, ako sú identifikátor filmu, jeho názov a rok vydania.
+- **`dim_tags`**: Uchováva značky, ktoré môžu byť využité na analýzu sentimentu alebo triedenie filmov podľa ďalších kritérií.
+- **`dim_genres`**: Obsahuje informácie o žánroch, vrátane ich identifikátorov a názvov.
+- **`dim_users`**: Poskytuje demografické údaje o používateľoch, ako napríklad ich vek, kategóriu veku, pohlavie, poštové smerovacie číslo a povolanie.
+- **`dim_date`**: Zahŕňa dáta súvisiace s hodnotiacimi dátumami, ako sú konkrétny deň, mesiac, rok, názvy mesiacov a dni v týždni.
+- **`dim_time`**: Obsahuje detailné informácie o tagoch, ako sú samotné tagy, dátum a čas ich vytvorenia.
 
 
 
