@@ -19,3 +19,14 @@ Zdrojové dáta pochádzajú z Kaggle datasetu dostupného [tu](https://grouplen
 Účelom ETL procesu bolo tieto dáta pripraviť, transformovať a sprístupniť pre viacdimenzionálnu analýzu.
 
 ---
+
+### **1.1 Dátová architektúra**
+
+### **ERD diagram**
+Surové dáta sú usporiadané v relačnom modeli, ktorý je znázornený na **entitno-relačnom diagrame (ERD)**:
+
+<p align="center">
+  <img src="" alt="ERD Schema">
+  <br>
+  <em>Obrázok 1 Entitno-relačná schéma AmazonBooks</em>
+</p>
