@@ -59,3 +59,6 @@ Navrhnutý bol **hviezdicový model (star schema)**, pre efektívnu analýzu kde
 </p>
 
 ---
+
+## **3. ETL proces v Snowflake**
+ETL proces pozostával z troch hlavných fáz: `extrahovanie` (Extract), `transformácia` (Transform) a `načítanie` (Load). Tento proces bol implementovaný v Snowflake s cieľom pripraviť zdrojové dáta zo staging vrstvy do viacdimenzionálneho modelu vhodného na analýzu a vizualizáciu.
