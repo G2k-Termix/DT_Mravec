@@ -113,7 +113,7 @@ SELECT
 FROM users_staging
 LEFT JOIN occupations_staging ON users_staging.occupation_id = occupations_staging.id;
 ```
----
+
 ##### **2. Dimeznia : `dim_movies`**
 Obsahuje údaje o filmoch vrátane názvu a roku vydania:
 
@@ -137,7 +137,6 @@ SELECT
     tags_staging.tag AS tag
 FROM tags_staging;
 ```
----
 
 ##### **4 Dimenzia:  `dim_time`**
 Obsahuje údaje o čase hodnotení filmov vrátane hodín, minút a dennej časti (AM/PM):
@@ -156,7 +155,6 @@ SELECT
     END AS am_pm
 FROM (SELECT DISTINCT CAST(rated_at AS TIME) AS rated_at FROM ratings_staging);
 ```
----
 
 ##### **5. Dimenzia: `dim_date`**
 Obsahuje údaje o dátumoch:
@@ -207,7 +205,7 @@ SELECT
 FROM genres_staging;
 ```
 
----
+--
 
 #### **Vytvorenie faktovej tabuľky:**
 
@@ -239,9 +237,9 @@ LEFT JOIN dim_tags ON tags_staging.id = dim_tags.dim_tags_id;
 
 ### **3.3 Load (Načítanie dát)**
 
-Po úspešnom vytvorení dimenzií a faktovej tabuľky boli všetky dáta úspešne nahraté do finálnej štruktúry dátového skladu. V rámci optimalizácie využitia úložiska a udržania poriadku v databáze sme pristúpili k odstráneniu staging tabuliek, ktoré už po transformácii dát neboli potrebné. Tento krok zabezpečuje efektívnejšie spracovanie a správu dát v ďalších fázach procesu
-
 ---
+
+Po úspešnom vytvorení dimenzií a faktovej tabuľky boli všetky dáta úspešne nahraté do finálnej štruktúry dátového skladu. V rámci optimalizácie využitia úložiska a udržania poriadku v databáze sme pristúpili k odstráneniu staging tabuliek, ktoré už po transformácii dát neboli potrebné. Tento krok zabezpečuje efektívnejšie spracovanie a správu dát v ďalších fázach procesu
 
 ```sql
 DROP TABLE IF EXISTS users_staging;
