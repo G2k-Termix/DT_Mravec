@@ -247,3 +247,89 @@ DROP TABLE IF EXISTS genres_movies_staging;
 ```
 
 ETL proces v Snowflake transformoval pôvodné údaje z formátu `.csv` do hviezdicového viacdimenzionálneho modelu. Tento postup zahŕňal kroky, ako čistenie dát, ich obohatenie o nové informácie a štruktúrovanú reorganizáciu. Výsledný model ponúka možnosť analyzovať správanie a preferencie používateľov, čím vytvára pevný základ pre tvorbu vizualizácií a reportov.
+
+---
+## **4. Vizualizácia dát**
+
+Dashboard ponúka `päť vizualizácií`, ktoré poskytujú prehľad o hlavných metrikách a trendoch súvisiacich s filmami, žánrami, používateľmi a hodnoteniami. Tieto grafy odpovedajú na kľúčové otázky a pomáhajú detailnejšie analyzovať správanie používateľov a ich preferencie.
+
+<p align="center">
+  <img src="Snail_dashboard_vizualizácia.png" alt="Diagramy">
+  <br>
+  <em>Obrázok 3 Päť diagramov/grafov MovieLens Datasetu</em>
+</p>
+
+---
+---
+### **Graf 1: Počet hodnotení podľa žánru (TOP 10)**
+Vizualizácia ukazuje počet hodnotení pre jednotlivé žánre, pričom najviac hodnotení má `Comedy (352,625)` a najmenej `Children's (72,151)` z TOP 10. Graf odhaľuje preferencie používateľov podľa žánrov a pomáha identifikovať najpopulárnejšie kategórie filmov.
+
+```sql
+-- 1. Počet hodnotení podľa žánru (TOP 10)
+-- SELECT dg.genres AS genre, COUNT(fr.id) AS rating_count
+FROM fact_rating AS fr
+JOIN dim_genres AS dg ON fr.dim_tags_id_INT = dg.id_INT
+GROUP BY dg.genres
+ORDER BY rating_count DESC
+LIMIT 10;
+```
+---
+
+### **Graf 2: Najobľúbenejšie filmy (TOP 10)**
+Vizualizácia ukazuje 10 najobľúbenejších filmov podľa priemerného hodnotenia, kde napríklad `„$1,000,000 Duck (1971)“` dosahuje najvyššie skóre. Graf porovnáva priemerné hodnotenia medzi týmito filmami, pričom pomáha identifikovať filmy s najvyššou preferenciou používateľov.
+
+```sql
+-- 2. Najobľúbenejšie filmy (TOP 10)
+SELECT dm.title, ROUND(AVG(CAST(fr.rating AS FLOAT)), 2) AS avg_rating, COUNT(fr.id) AS rating_count
+FROM fact_rating AS fr
+JOIN dim_movies AS dm ON fr.dim_movies_id_INT = dm.id_INT
+GROUP BY dm.title
+HAVING COUNT(fr.id) >= 30
+ORDER BY avg_rating DESC
+LIMIT 10;
+```
+---
+
+### **Graf 3: Najaktívnejší používatelia (TOP 10)**
+Vizualizácia ukazuje 10 používateľov pod ich `USER_ID` a ďalej nám ukazuje aj RATING_COUNT, tzv. koľko rating-ov uverejnili. Najaktívnejčí používateľ s `id 4169` a `rating_count 3956`.
+
+```sql
+-- 3. Najaktívnejší používatelia (TOP 10)
+SELECT fr.dim_users AS user_id, COUNT(fr.id) AS rating_count
+FROM fact_rating AS fr
+GROUP BY fr.dim_users
+ORDER BY rating_count DESC
+LIMIT 10;
+```
+---
+
+### **Graf 4: Aktivita počas dní v týždni (7 dní)**
+Táto vizualizácia zobrazuje 7 dní v týždni a celkový rating `TOTAL_RATINGS`. Najviac ratingov bolo v `Stredu` a bolo to presne `358299`.
+
+```sql
+-- 4. Aktivita počas dní v týždni (7 dní)
+SELECT dd.day_of_week AS day, COUNT(fr.id) AS total_ratings
+FROM fact_rating AS fr
+JOIN dim_date AS dd ON fr.dim_date_id_INT = dd.id_INT
+GROUP BY dd.day_of_week
+ORDER BY day ASC;
+```
+---
+
+### **Graf 5: Počet hodnotení podľa povolaní (TOP 10)**
+Táto vizualizácia zobrazuje koľko ľudí s daným povolaním hodnotilo filmy.
+
+```sql
+-- 5. Počet hodnotení podľa povolaní (TOP 10)
+SELECT du.occupation AS occupation, COUNT(fr.id) AS total_ratings
+FROM fact_rating AS fr
+JOIN dim_users AS du ON fr.dim_users = du.id_INT
+GROUP BY du.occupation
+ORDER BY total_ratings DESC
+LIMIT 10;
+```
+
+Dashboard ponúka detailný pohľad na dáta, pričom sa sústreďuje na analýzu hodnotení a preferencií filmov. Vizualizácie umožňujú lepšie pochopenie trendov a môžu prispieť k optimalizácii odporúčacích systémov, propagácie a správy filmových databáz.
+
+---
+**Autor:** Matias Mravec
